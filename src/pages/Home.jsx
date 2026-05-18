@@ -6,13 +6,9 @@ import {
 } from "lucide-react";
 import { getTop20 } from "../services/api";
 import "../styles/Home.css";
+import Navbar from "../components/Navbar";
 
-interface Top20Item {
-  tag: string;
-  count: number;
-  categoria: string;
-  porcentaje: number;
-}
+
 
 const caracteristicas = [
   {
@@ -45,7 +41,7 @@ const COLORES = ["#00d4ff", "#ff6b35", "#a78bfa", "#6bcb77", "#ffd93d"];
 
 export default function Home() {
   const navigate = useNavigate();
-  const [top5, setTop5] = useState<Top20Item[]>([]);
+  const [top5, setTop5] = useState([]);
   useEffect(() => {
     getTop20()
       .then(res => setTop5((res.data || []).slice(0, 5)))
@@ -57,7 +53,9 @@ export default function Home() {
     : 1;
 
   return (
+    
     <div className="home-page">
+      <Navbar />
 
       {/* ── HERO ── */}
       <section className="hero">

@@ -7,6 +7,10 @@
 
 /* ── HERO ────────────────────────────────── */
 .hero {
+  padding-top: 80px; 
+  padding-bottom: 60px;
+  padding-left: 80px;
+  padding-right: 80px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;

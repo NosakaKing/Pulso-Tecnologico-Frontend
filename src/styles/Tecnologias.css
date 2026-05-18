@@ -1,0 +1,169 @@
+.tec-page {
+  padding: 40px 48px;
+  background: radial-gradient(ellipse at 80% 0%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
+              #0a0e1a;
+  min-height: calc(100vh - 60px); /* ← descuenta el header */
+  color: white;
+}
+
+/* ── HEADER ──────────────────────────────── */
+.tec-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #2a2f3e;
+}
+
+.tec-titulo {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.tec-subtitulo {
+  color: #8892a4;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 500px;
+}
+
+.tec-buscador {
+  background-color: #12151f;
+  border: 1px solid #2a2f3e;
+  border-radius: 10px;
+  padding: 10px 16px;
+  color: white;
+  font-size: 14px;
+  width: 240px;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s;
+}
+
+.tec-buscador:focus {
+  outline: none;
+  border-color: #ff6b35;
+}
+
+.tec-buscador::placeholder {
+  color: #4a5568;
+}
+
+/* ── FILTROS ─────────────────────────────── */
+.tec-filtros {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+.tec-filtro-btn {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid #2a2f3e;
+  background: none;
+  color: #8892a4;
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tec-filtro-btn:hover {
+  border-color: #ff6b35;
+  color: #ff6b35;
+}
+
+.tec-filtro-btn.activo {
+  background-color: #ff6b35;
+  border-color: #ff6b35;
+  color: white;
+  font-weight: 600;
+}
+
+/* ── GRID ────────────────────────────────── */
+.tec-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.tec-card {
+  background-color: #12151f;
+  border: 1px solid #2a2f3e;
+  border-radius: 12px;
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.tec-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--tec-color);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.tec-card:hover {
+  border-color: var(--tec-color);
+  transform: translateY(-2px);
+  background-color: #1a1f2e;
+}
+
+.tec-card:hover::before {
+  opacity: 1;
+}
+
+.tec-card-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tec-card-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  flex: 1;
+}
+
+.tec-card-categoria {
+  font-size: 11px;
+  color: #4a5568;
+  background-color: #1e2337;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* ── EMPTY ───────────────────────────────── */
+.tec-empty {
+  text-align: center;
+  color: #4a5568;
+  padding: 60px;
+  font-size: 15px;
+}
+
+/* ── RESPONSIVE ──────────────────────────── */
+@media (max-width: 1024px) {
+  .tec-grid { grid-template-columns: repeat(3, 1fr); }
+  .tec-page { padding: 32px; }
+}
+
+@media (max-width: 768px) {
+  .tec-grid   { grid-template-columns: repeat(2, 1fr); }
+  .tec-header { flex-direction: column; }
+  .tec-buscador { width: 100%; }
+}
