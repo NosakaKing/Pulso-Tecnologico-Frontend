@@ -6,11 +6,12 @@ import {
   ResponsiveContainer, Cell, CartesianGrid
 } from "recharts";
 
+
 const COLORES_CATEGORIA = {
-  "lenguaje": "#00d4ff",   // Celeste
-  "framework": "#ff6b35",   // Naranja
-  "base de datos": "#a78bfa",   // Morado
-  "otros": "#6bcb77",   // Verde
+  "lenguaje": "#00d4ff",
+  "framework": "#ff6b35",
+  "base de datos": "#a78bfa",
+  "otros": "#6bcb77",
 };
 
 const CustomTooltip = ({ active, payload }) => {
@@ -45,13 +46,14 @@ export default function Top20() {
   const [loading, setLoading] = useState(true);
   const [startYear, setStartYear] = useState(2015);
   const [endYear, setEndYear] = useState(2024);
+  const [categoria, setCategoria] = useState(null);
 
   useEffect(() => {
     setLoading(true);
-    getTop20(startYear, endYear)
+    getTop20(startYear, endYear, categoria)
       .then(res => setData(res.data || []))
       .finally(() => setLoading(false));
-  }, [startYear, endYear]);
+  }, [startYear, endYear, categoria]);
 
   return (
     <PageLayout>
@@ -71,6 +73,7 @@ export default function Top20() {
             {/* Filtro de años */}
             <div className="filtro-años">
               <div className="filtro-grupo">
+                {/*desde*/}
                 <label className="filtro-label">Desde</label>
                 <select
                   className="filtro-select"
@@ -83,6 +86,7 @@ export default function Top20() {
                 </select>
               </div>
               <div className="filtro-grupo">
+                {/*hasta*/}
                 <label className="filtro-label">Hasta</label>
                 <select
                   className="filtro-select"
@@ -92,6 +96,21 @@ export default function Top20() {
                   {[2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024].map(y => (
                     <option key={y} value={y}>{y}</option>
                   ))}
+                </select>
+              </div>
+              <div className="filtro-grupo">
+                {/*categoria*/}
+                <label className="filtro-label">Categoría</label>
+                <select
+                  className="filtro-select"
+                  value={categoria || ""}
+                  onChange={e => setCategoria(e.target.value || null)}
+                >
+                  <option value="">Todas</option>
+                  <option value="Lenguaje">Lenguaje</option>
+                  <option value="Framework">Framework</option>
+                  <option value="Base de Datos">Base de Datos</option>
+                  <option value="Otros">Otros</option>
                 </select>
               </div>
             </div>
