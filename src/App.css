@@ -1,23 +1,33 @@
+/* ── BASE ────────────────────────────────── */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
   background-color: #0a0e1a;
   color: #ffffff;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 #root {
+  width: 100%;
   min-height: 100vh;
 }
 
-/* El app-main ya está en NavBar.css con padding-top: 60px */
+/* ── PAGE LAYOUT ─────────────────────────── */
+.app-main {
+  padding-top: 60px;
+  /* altura del navbar fijo */
+  width: 100%;
+  min-height: calc(100vh - 60px);
+}
+
 .page-content {
-  max-width: 0;
-  margin: 0 auto;
+  width: 100%;
   padding: 32px 40px;
 }
 
@@ -26,27 +36,31 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
+  margin-bottom: 32px;
 }
 
 .section-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  gap: 24px;
+  width: 100%;
+  text-align: left;
 }
 
 .section-titulo {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   color: white;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .section-subtitulo {
   font-size: 14px;
   color: #8892a4;
   line-height: 1.6;
-  max-width: 600px;
+  text-align: left;
 }
 
 .section-subtitulo strong {
@@ -59,6 +73,7 @@ body {
   border-radius: 16px;
   padding: 24px;
   border: 1px solid #2a2f3e;
+  width: 100%;
 }
 
 /* ── INSIGHT BOX ─────────────────────────── */
@@ -66,8 +81,8 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  background-color: rgba(255, 107, 53, 0.06);
-  border: 1px solid rgba(255, 107, 53, 0.15);
+  background-color: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.15);
   border-radius: 12px;
   padding: 16px 20px;
 }
@@ -81,6 +96,10 @@ body {
   color: #8892a4;
   font-size: 14px;
   line-height: 1.6;
+}
+
+.insight-texto strong {
+  color: white;
 }
 
 /* ── LOADING / ERROR ─────────────────────── */
@@ -97,19 +116,23 @@ body {
   gap: 12px;
 }
 
-.estado-error { border-color: #ff4444; }
+.estado-error {
+  border-color: #ff4444;
+}
 
 .spinner {
   width: 32px;
   height: 32px;
   border: 3px solid #2a2f3e;
-  border-top-color: #ff6b35;
+  border-top-color: #00d4ff;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ── FILTROS ─────────────────────────────── */
@@ -144,6 +167,7 @@ body {
   font-family: 'Inter', sans-serif;
   cursor: pointer;
   transition: border-color 0.2s;
+  min-width: 100px;
 }
 
 .filtro-select:focus {
@@ -164,6 +188,7 @@ body {
   gap: 6px;
   font-size: 13px;
   color: #8892a4;
+  text-transform: capitalize;
 }
 
 .leyenda-dot {
@@ -178,10 +203,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  flex-shrink: 0;
 }
 
 .tag-btn {
-  padding: 5px 12px;
+  padding: 5px 14px;
   border-radius: 20px;
   border: 1px solid #2a2f3e;
   background: none;
@@ -249,17 +275,8 @@ body {
   font-weight: 600;
 }
 
-.so-link:hover { text-decoration: underline; }
-
-/* ── RESPONSIVE ──────────────────────────── */
-@media (max-width: 1024px) {
-  .page-content { padding: 24px 20px; }
-  .section-header { flex-direction: column; }
-}
-
-@media (max-width: 768px) {
-  .page-content { padding: 16px; }
-  .filtro-años  { flex-wrap: wrap; }
+.so-link:hover {
+  text-decoration: underline;
 }
 
 /* ── CLASIFICACION ───────────────────────── */
@@ -287,6 +304,7 @@ body {
 .resumen-label {
   color: #8892a4;
   font-size: 13px;
+  text-transform: capitalize;
 }
 
 .tendencia-badge {
@@ -304,7 +322,6 @@ body {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 12px;
-  margin-bottom: 8px;
 }
 
 .recomendacion-card {
@@ -353,14 +370,210 @@ body {
   font-weight: 800;
 }
 
+/* ── STACK OVERFLOW CARD ─────────────────── */
+.stackoverflow-card {
+  background-color: #12151f;
+  border-radius: 16px;
+  padding: 20px 24px;
+  border: 1px solid #2a2f3e;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.so-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.so-titulo {
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.so-desc {
+  font-size: 13px;
+  color: #8892a4;
+}
+
+.so-desc strong {
+  color: white;
+}
+
+.so-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ff6b35;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.so-btn:hover {
+  background-color: #e05c2a;
+}
+
+/* ── MÉTRICAS EXPLICACIÓN ────────────────── */
+.metricas-explicacion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.metrica-exp-item {
+  background-color: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.metrica-exp-titulo {
+  color: #00d4ff;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metrica-exp-desc {
+  color: #8892a4;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ── TECH HERO CARD ──────────────────────── */
+.tech-hero-card {
+  background-color: #12151f;
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid #2a2f3e;
+  border-left-width: 4px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+}
+
+.tech-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tech-tag {
+  display: inline-block;
+  color: white;
+  font-size: 20px;
+  font-weight: 800;
+  padding: 6px 18px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.tech-trend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tech-hero-stats {
+  display: flex;
+  gap: 32px;
+}
+
+.tech-stat {
+  text-align: center;
+}
+
+.tech-stat-label {
+  color: #8892a4;
+  font-size: 11px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tech-stat-value {
+  color: white;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.categoria-badge {
+  border: 1px solid;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
 /* ── RESPONSIVE ──────────────────────────── */
 @media (max-width: 1024px) {
+
   .recomendaciones-grid,
-  .brecha-grid { grid-template-columns: repeat(3, 1fr); }
-  .clasificacion-resumen { grid-template-columns: 1fr; }
+  .brecha-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .clasificacion-resumen {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .tech-hero-card {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-hero-stats {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .metricas-explicacion {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
+  .page-content {
+    padding: 16px;
+  }
+
+  .section-header {
+    flex-direction: column;
+  }
+
+  .filtro-años {
+    flex-direction: column;
+  }
+
   .recomendaciones-grid,
-  .brecha-grid { grid-template-columns: repeat(2, 1fr); }
+  .brecha-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .clasificacion-resumen {
+    grid-template-columns: 1fr;
+  }
+
+  .stackoverflow-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
