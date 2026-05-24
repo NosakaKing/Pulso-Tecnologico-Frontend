@@ -8,6 +8,7 @@ const LINKS = [
   { label: "Inicio",           path: "/"               },
   { label: "Top 20",           path: "/top20"          },
   { label: "Series Temporales",path: "/timeseries"     },
+  { label: "Encuestas",    path: "/survey"  },
   { label: "Clasificación",    path: "/clasificacion"  },
   { label: "Mercado",          path: "/mercado"        },
   { label: "Predicción",       path: "/prediccion"     },

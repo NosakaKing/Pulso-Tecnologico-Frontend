@@ -62,3 +62,15 @@ export const getSurveyTodos = (startYear = null, endYear = null) => {
   if (endYear)   params.append("end_year",   endYear);
   return fetcher(`${BASE_URL}/survey/evolucion?${params}`);
 };
+
+
+// Prediccion
+export const predecirTag = (tag: string, periods = 12) =>
+  fetch(`${BASE_URL}/prediction`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ tag, periods }),
+  }).then(res => {
+    if (!res.ok) throw new Error("Error en la predicción");
+    return res.json();
+  });

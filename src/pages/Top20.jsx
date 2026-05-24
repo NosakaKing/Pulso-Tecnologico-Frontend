@@ -156,7 +156,7 @@ export default function Top20() {
                     width={100}
                     tick={{ fill: "white" }}
                   />
-                  <Tooltip content={<CustomTooltip />} />
+                  <Tooltip content={<CustomTooltip />} cursor={false} />
                   {/*grados en las barras*/}
                   <Bar dataKey="count" radius={[0, 6, 6, 0]}>
                     {data.map((entry, i) => (

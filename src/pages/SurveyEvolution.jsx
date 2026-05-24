@@ -6,7 +6,18 @@ import {
   ResponsiveContainer, CartesianGrid, Legend, ReferenceLine
 } from "recharts";
 
-const TAGS = ["python", "javascript", "java", "typescript", "rust", "go"];
+const TAGS = ["javascript",
+  "python",
+  "typescript",
+  "html/css", // O 'html' y 'css' por separado si tu API los divide
+  "sql",
+  "c#",
+  "java",
+  "c++",
+  "go",
+  "rust",
+  "php",
+  "bash/shell"];
 
 export default function SurveyEvolucion() {
   const [tag,     setTag]     = useState("python");
